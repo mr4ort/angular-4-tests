@@ -1,6 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {CounterComponentComponent} from './components/counter-component/counter-component.component';
+import {MainService} from './services/main.service';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -8,7 +10,11 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        CounterComponentComponent
+      ],
+      providers: [
+        MainService
       ],
     }).compileComponents();
   }));

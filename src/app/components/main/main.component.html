@@ -1,0 +1,44 @@
+<mat-toolbar color="primary" class="header">
+  <span>Application</span>
+</mat-toolbar>
+<mat-card class="form">
+  <form [formGroup]="mainForm" novalidate>
+    <mat-card-title>
+      Form
+    </mat-card-title>
+    <mat-card-content>
+
+      <div class="input-row">
+        <mat-form-field class="fool-width">
+          <input matInput placeholder="Name" formControlName="name">
+        </mat-form-field>
+      </div>
+
+      <div class="input-row">
+        <mat-radio-group name="gender" [(value)]="favoriteGender" formControlName="gender">
+          <mat-radio-button name="gender" *ngFor="let gender of genders"  [value]="gender">
+            {{gender}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="input-row">
+        <mat-form-field class="fool-width">
+          <mat-select placeholder="Age" [(value)]="selectedAge" formControlName="age">
+            <mat-option *ngFor="let age of ages" [value]="age">
+              {{ age }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="input-row">
+        <my-date-picker [options]="myDataPickerOptions" formControlName="date"  name="date"></my-date-picker>
+      </div>
+
+
+      <button mat-raised-button color="primary" (click)="submitForm(mainForm.value)" [disabled]="mainForm.invalid">Send data</button>
+    </mat-card-content>
+  </form>
+
+</mat-card>
