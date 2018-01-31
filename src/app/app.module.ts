@@ -17,12 +17,14 @@ import {
 } from '@angular/material';
 import {MyDatePickerModule} from 'mydatepicker';
 import {ReactiveFormsModule} from '@angular/forms';
+import { SecondComponent } from './components/second/second.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    SecondComponent
   ],
   imports: [
     BrowserModule,

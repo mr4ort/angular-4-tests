@@ -28,6 +28,7 @@ export class MainComponent implements OnInit {
   initForm() {
     this.mainForm = this.fb.group({
       name: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
       gender: [null, [Validators.required]],
       age: [ null, [Validators.required]],
       date: [null, [Validators.required]]

@@ -23,6 +23,15 @@ describe('angular-test App', () => {
     expect(element(by.id('form-title')).getText()).toEqual('Form');
   });
 
+  it('not allows submit invalid form form', () => {
+    const form = element(by.id('main-form'));
+    const button = element(by.id('submit-button'));
+
+    expect(element(by.id('main-form')).className).not.toMatch('ng-invalid');
+    button.click();
+    expect(element(by.id('main-form')).className).toMatch('ng-invalid');
+  });
+
   it('should add value', () => {
     const el1 = element(by.css('input[name="name"]'));
     expect(el1).toBeDefined();

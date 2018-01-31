@@ -1,5 +1,6 @@
 <mat-toolbar color="primary" class="header">
   <span>Application</span>
+  <a routerLink="/second">second page</a>
 </mat-toolbar>
 <mat-card class="form">
   <form [formGroup]="mainForm" novalidate id="main-form">
@@ -12,6 +13,18 @@
         <mat-form-field class="fool-width">
           <input matInput placeholder="Name" formControlName="name" name="name">
         </mat-form-field>
+      </div>
+
+      <div class="input-row">
+        <div class="input-block fool-width">
+          <mat-form-field class="fool-width">
+            <input matInput placeholder="Email" formControlName="email" name="email">
+          </mat-form-field>
+        </div>
+        <div class="error-box" *ngIf="mainForm.controls['email'].invalid && mainForm.controls['email'].touched">
+          <span class="error-message" *ngIf="mainForm.controls['email'].errors.email">email not valid</span>
+          <span class="error-message" *ngIf="mainForm.controls['email'].errors.required">email is required {{mainForm.controls.email.required}}</span>
+        </div>
       </div>
 
       <div class="input-row">
@@ -43,7 +56,7 @@
       </div>
 
 
-      <button mat-raised-button id="submit-button" color="primary" (click)="submitForm(mainForm.value)" [disabled]="mainForm.invalid">Send data</button>
+      <button mat-raised-button id="submit-button" color="primary" (click)="submitForm(mainForm)">Send data</button>
     </mat-card-content>
   </form>
 
