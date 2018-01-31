@@ -15,15 +15,15 @@
         </mat-form-field>
       </div>
 
-      <div class="input-row">
+      <div class="input-row" id="email">
         <div class="input-block fool-width">
           <mat-form-field class="fool-width">
             <input matInput placeholder="Email" formControlName="email" name="email">
           </mat-form-field>
         </div>
         <div class="error-box" *ngIf="mainForm.controls['email'].invalid && mainForm.controls['email'].touched">
-          <span class="error-message" *ngIf="mainForm.controls['email'].errors.email">email not valid</span>
-          <span class="error-message" *ngIf="mainForm.controls['email'].errors.required">email is required {{mainForm.controls.email.required}}</span>
+          <span class="error-message" *ngIf="mainForm.controls['email'].errors.email && mainForm.controls['email'].value">email not valid</span>
+          <span class="error-message" *ngIf="mainForm.controls['email'].errors.required">email is required</span>
         </div>
       </div>
 

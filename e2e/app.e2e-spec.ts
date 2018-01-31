@@ -23,14 +23,29 @@ describe('angular-test App', () => {
     expect(element(by.id('form-title')).getText()).toEqual('Form');
   });
 
-  it('not allows submit invalid form form', () => {
-    const form = element(by.id('main-form'));
-    const button = element(by.id('submit-button'));
+  it('should have work validation of email field', () => {
+    const block = element(by.id('email'));
+    const input = block.all(by.tagName('input')).get(0);
 
-    expect(element(by.id('main-form')).className).not.toMatch('ng-invalid');
-    button.click();
-    expect(element(by.id('main-form')).className).toMatch('ng-invalid');
+    input.click();
+    element(by.id('main-form')).click();
+    expect(block.all(by.className('error-message')).get(0).getText()).toEqual('email is required');
+    // browser.sleep(5000);
+    input.sendKeys('some text');
+    expect(block.all(by.className('error-message')).get(0).getText()).toEqual('email not valid');
+    input.clear();
+    input.sendKeys('example@domain.com');
+    expect(block.all(by.className('error-message')).length).toBeUndefined();
   });
+
+  // it('not allows submit invalid form form', () => {
+  //   const form = element(by.id('main-form'));
+  //   const button = element(by.id('submit-button'));
+  //
+  //   expect(element(by.id('main-form')).className).not.toMatch('ng-invalid');
+  //   button.click();
+  //   expect(element(by.id('main-form')).className).toMatch('ng-invalid');
+  // });
 
   it('should add value', () => {
     const el1 = element(by.css('input[name="name"]'));
@@ -44,7 +59,7 @@ describe('angular-test App', () => {
     expect(el2).toBeDefined();
 
     element(by.id('gender')).all(by.className('mat-radio-label')).get(0).click();
-    browser.sleep(2000);
+    // browser.sleep(2000);
   });
 
   it('should define select age', () => {
@@ -57,7 +72,7 @@ describe('angular-test App', () => {
       .all(by.tagName('option'))
       .get(0)
       .click();
-    browser.sleep(5000);
+    // browser.sleep(5000);
   });
 
   it('should have datapicker', () => {
@@ -68,7 +83,7 @@ describe('angular-test App', () => {
     browser.sleep(1000);
 
     element(by.tagName('my-date-picker')).all(by.className('daycell')).get(0).click();
-    browser.sleep(3000);
+    browser.sleep(2000);
 
   });
 
@@ -77,5 +92,5 @@ describe('angular-test App', () => {
     expect(button).toBeDefined();
 
     expect(button.isEnabled()).toBe(true);
-  })
+  });
 });
