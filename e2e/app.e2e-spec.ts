@@ -73,17 +73,13 @@ describe('angular-test App', () => {
     browser.sleep(1000);
 
     element(by.tagName('my-date-picker')).all(by.className('daycell')).get(15).click();
-    browser.sleep(2000);
   });
 
   it('should enable button submit', () => {
-    browser.sleep(2000);
     const button = element(by.id('submit-button'));
     expect(button).toBeDefined();
     expect(button.isEnabled()).toBe(true);
-    browser.sleep(1000);
     element(by.id('submit-button')).click();
-    browser.sleep(1000);
     expect(element(by.id('submit-success'))).toBeDefined();
   });
 });

@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecondComponent implements OnInit {
 
+  editMessageIs = false;
   constructor() { }
+
+  showMessage() {
+    this.editMessageIs = true
+  }
 
   ngOnInit() {
   }

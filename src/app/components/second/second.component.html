@@ -1,3 +1,54 @@
-<p>
-  second works!
-</p>
+<div class="page">
+  <h1 class="page__title">Title</h1>
+
+  <div class="table">
+    <div class="table__head">
+      <div class="table__row">
+        <div class="table__col">
+          &nbsp;
+        </div>
+        <div class="table__col">Name</div>
+        <div class="table__col">Gender</div>
+        <div class="table__col">status</div>
+        <div class="table__col">actions</div>
+      </div>
+    </div>
+    <div class="table-body">
+      <div class="table__row">
+        <div class="table__col">1</div>
+        <div class="table__col">Ivan</div>
+        <div class="table__col">boy</div>
+        <div class="table__col">activated</div>
+        <div class="table__col">
+          <button (click)="showMessage()" class="btn-update">update</button>
+        </div>
+      </div>
+      <div class="table__row">
+        <div class="table__col">2</div>
+        <div class="table__col">Taras</div>
+        <div class="table__col">Boy</div>
+        <div class="table__col">disabled</div>
+        <div class="table__col">
+          <button (click)="showMessage()" class="btn-update">update</button>
+        </div>
+      </div>
+      <div class="table__row">
+        <div class="table__col">2</div>
+        <div class="table__col">Mary</div>
+        <div class="table__col">girl</div>
+        <div class="table__col">disabled</div>
+        <div class="table__col">
+          <button (click)="showMessage()" class="btn-update">update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="message" id="edit-message" *ngIf="editMessageIs">
+    <span>same text</span>
+  </div>
+
+</div>
+
+
+
