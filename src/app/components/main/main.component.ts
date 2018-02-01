@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class MainComponent implements OnInit {
 
   mainForm: FormGroup;
+  isSubmited = false;
 
   constructor(
     private fb: FormBuilder
@@ -37,10 +38,11 @@ export class MainComponent implements OnInit {
 
   submitForm(formData) {
     console.log(formData);
+    this.isSubmited = true;
   }
 
   ngOnInit() {
-
+    console.log(this.mainForm);
   }
 
 }

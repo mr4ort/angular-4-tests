@@ -12,11 +12,6 @@ describe('angular-test App', () => {
     page = new AppPage();
   });
 
-  // it('should display welcome message', () => {
-  //   page.navigateTo();
-  //   browser.sleep(10000);
-  //   // expect(page.getParagraphText()).toEqual('Welcome to app!');
-  // });
 
   it('should have form', () => {
     page.navigateTo();
@@ -38,20 +33,15 @@ describe('angular-test App', () => {
     expect(block.all(by.className('error-message')).length).toBeUndefined();
   });
 
-  // it('not allows submit invalid form form', () => {
-  //   const form = element(by.id('main-form'));
-  //   const button = element(by.id('submit-button'));
-  //
-  //   expect(element(by.id('main-form')).className).not.toMatch('ng-invalid');
-  //   button.click();
-  //   expect(element(by.id('main-form')).className).toMatch('ng-invalid');
-  // });
+  it('should validate name input', () => {
+    const block = element(by.id('name'));
+    const input = block.all(by.tagName('input')).get(0);
 
-  it('should add value', () => {
-    const el1 = element(by.css('input[name="name"]'));
-    expect(el1).toBeDefined();
-    el1.sendKeys('Ivan');
-    browser.sleep(2000);
+    input.click();
+    element(by.id('main-form')).click();
+    expect(block.all(by.className('error-message')).get(0).getText()).toEqual('name is required');
+    input.sendKeys('Ivan');
+    expect(block.all(by.className('error-message')).length).toBeUndefined();
   });
 
   it('should defined radiobuttons', () => {
@@ -82,15 +72,18 @@ describe('angular-test App', () => {
     el.all(by.className('btnpicker btnpickerenabled')).get(0).click();
     browser.sleep(1000);
 
-    element(by.tagName('my-date-picker')).all(by.className('daycell')).get(0).click();
+    element(by.tagName('my-date-picker')).all(by.className('daycell')).get(15).click();
     browser.sleep(2000);
-
   });
 
   it('should enable button submit', () => {
+    browser.sleep(2000);
     const button = element(by.id('submit-button'));
     expect(button).toBeDefined();
-
     expect(button.isEnabled()).toBe(true);
+    browser.sleep(1000);
+    element(by.id('submit-button')).click();
+    browser.sleep(1000);
+    expect(element(by.id('submit-success'))).toBeDefined();
   });
 });

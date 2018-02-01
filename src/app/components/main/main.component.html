@@ -9,10 +9,15 @@
     </mat-card-title>
     <mat-card-content>
 
-      <div class="input-row">
-        <mat-form-field class="fool-width">
-          <input matInput placeholder="Name" formControlName="name" name="name">
-        </mat-form-field>
+      <div class="input-row" id="name">
+        <div class="input-block fool-width">
+          <mat-form-field class="fool-width">
+            <input matInput placeholder="Name" formControlName="name" name="name">
+          </mat-form-field>
+        </div>
+        <div class="error-box" *ngIf="mainForm.controls['name'].invalid && mainForm.controls['name'].touched">
+          <span class="error-message" *ngIf="mainForm.controls['name'].errors.required">name is required</span>
+        </div>
       </div>
 
       <div class="input-row" id="email">
@@ -35,16 +40,6 @@
         </mat-radio-group>
       </div>
 
-      <!--<div class="input-row">-->
-        <!--<mat-form-field class="fool-width">-->
-          <!--<mat-select placeholder="Age" [(value)]="selectedAge" formControlName="age" name="age" id="age">-->
-            <!--<mat-option *ngFor="let age of ages" [value]="age">-->
-              <!--{{ age }}-->
-            <!--</mat-option>-->
-          <!--</mat-select>-->
-        <!--</mat-form-field>-->
-      <!--</div>-->
-
       <div class="input-row">
         <select name="age" id="age" [(value)]="selectedAge" formControlName="age">
           <option *ngFor="let age of ages" [value]="age">{{ age }}</option>
@@ -55,8 +50,8 @@
         <my-date-picker [options]="myDataPickerOptions" formControlName="date"  name="date" id="datapicker"></my-date-picker>
       </div>
 
-
-      <button mat-raised-button id="submit-button" color="primary" (click)="submitForm(mainForm)">Send data</button>
+      <button type="button" mat-raised-button id="submit-button" color="primary" (click)="submitForm(mainForm)" [disabled]="mainForm.invalid">Send data</button>
+      <div *ngIf="isSubmited" id="submit-success">form submited</div>
     </mat-card-content>
   </form>
 
