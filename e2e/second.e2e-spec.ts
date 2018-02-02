@@ -33,6 +33,7 @@ describe('angular-test Second page', () => {
     expect(page.getText('.btn-update')).toBe('update');
   });
 
+
   it('should show message', () => {
     page.getElement('.btn-update').click();
     expect(page.getElement('#edit-message')).toBeDefined();
